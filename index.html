@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang>
+    <head>
+        <title>Keycloak - OIDC Authentication</title>
+        <link rel="shortcut icon" type="image/png" href="./logo.png"/>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+        <link href="./stylesheet/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="mdWrapper">
+            <img src="./logo.png" alt="Keycloak-OIDC" />
+            <h3>Keycloak - OIDC</h3>
+            <h4>Javascript - Implicit flow authentication</h4>
+            <button class="btn-normal" onclick="authenticateLogin()">Login</button>
+        </div>
+        <script src="./script/keycloak.js"></script>
+        <script>
+            let keycloak = new Keycloak({
+                "url": "https://{hostname}/auth",
+                "realm": "keycloak-tenant-id",
+                "clientId": "keycloak-client-id"
+            });
+            function authenticateLogin(){
+                keycloak.init({
+                    onLoad: "login-required",
+                    flow: "implicit",
+                    redirectUri: window.location.origin,
+                    checkLoginIframe: false,
+                    promiseType: "native"
+                })
+                .then((authenticated) => {
+                    console.log(authenticated);
+                })
+                .catch((error) => {
+                    console.log("Something went wrong due to \n" + error);
+                })
+            }
+        </script>
+    </body>
+</html>
