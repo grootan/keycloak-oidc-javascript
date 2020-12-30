@@ -1,6 +1,6 @@
-# Keycloak - Implicit Flow using Plain Javascript
+# Keycloak - Implicit Flow using Javascript
 
-This repo contains plain javascript example app that demonstrate the OpenId Connect's Implicit flow.
+This repo contains javascript example app that demonstrate the OpenId Connect's Implicit flow.
 
 ## Instructions
 
